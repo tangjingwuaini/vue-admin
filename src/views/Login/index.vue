@@ -253,12 +253,14 @@ export default {
           password:sha1(ruleForm.password),
           code:ruleForm.code
         }
-     Login(repuestData).then(response => {
+      root.$store.dispatch('app/login', repuestData).then(response => {
        console.log('登录成功')
        console.log(response)
-     }).catch(error =>{
-
-     })
+       // 页面跳转
+       root.$router.push({
+         name:'Console'
+       })
+     }).catch(error =>{});
    })
     /**
     * 注册
