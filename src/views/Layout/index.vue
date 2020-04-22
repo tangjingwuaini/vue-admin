@@ -1,5 +1,6 @@
 <template>
-    <div id="layout">  //:class="[menuStatus ? 'close' : 'open']" 因为样式不行  所有不用了
+    <!-- :class="[menuStatus ? 'close' : 'open']" 因为样式不行  所有不用了 -->
+    <div id="layout">  
         <LayoutHeader/>
         <LayoutMain/>
         <LayoutNav/>

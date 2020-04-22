@@ -63,7 +63,7 @@ const routes = [
         meta:{
           name:"信息列表"
         },
-        component: Layout,
+        component: () => import("../views/Info/index.vue")
       },
       {
         path: "/infoCategory",
