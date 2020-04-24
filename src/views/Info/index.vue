@@ -72,6 +72,7 @@
                 <template slot-scope="scope">
                     <el-button type="danger" size="mini" @click="deleteItem(scope.row.id)">删除</el-button>
                     <el-button type="success" size="mini" @click="editInfo(scope.row.id)">编辑</el-button>
+                    <el-button type="success" size="mini" @click="detailed(scope.row)">编辑详情</el-button>
                 </template>
             </el-table-column>
         </el-table>
@@ -184,6 +185,36 @@ export default {
                 dialog_info_edit.value =true
             }
 
+            /**
+             * 详情页
+             */
+            const detailed = (data) => {
+                // 预先存值
+                // root.$store.commit("infoDetailed/SET_ID", data.id);
+                // root.$store.commit("infoDetailed/SET_TITLE", data.title);
+
+                root.$store.commit("infoDetailed/UPDATE_STATE_VALUE",{
+                    id:{
+                        value:data.id,
+                        sessionKey:"infoId",
+                        session:true
+                    },
+                    title:{
+                        value:data.title,
+                        sessionKey:"infoTitle",
+                        session:true
+                    }
+                });
+                // 跳转页面
+                root.$router.push({
+                    name:"InfoDetailed",
+                    params:{
+                        id:data.id,
+                        title:data.title
+                    }
+                })
+            }
+
             const getList = () => {
                 // 单独处理数据
                 let requestData = formatData();
@@ -272,7 +303,7 @@ export default {
             // reactive
             table_data,options,search_option,   
             // vue2.0 methdos
-            handleSizeChange,handleCurrentChange,deleteItem,deleteAll,toData,toCategory,handleSelectionChange,getList,editInfo,
+            handleSizeChange,handleCurrentChange,deleteItem,deleteAll,toData,toCategory,handleSelectionChange,getList,editInfo,detailed,
         }
       }
 }

@@ -33,3 +33,15 @@ export function common(){
         categoryItem
     }
 }
+
+/**
+ * 获取七牛云token
+ */
+export function QiniuToKen(data){
+    return service.request({
+        method: 'post',
+        url: "/uploadImgToken/",
+        data
+        // data:data, 左边的data是变量名(key)后台接收的.右边的Data是接收的参数,如果两者都是同名的情况下,可以写成单一即可(ES6写法)
+    })
+}
